@@ -1,0 +1,10 @@
+app_auth/db/
+lixo/__pycache__/
+uap/__pycache__/
+uap/utils/__pycache__/
+app_auth/__pycache__/
+app_auth/utils/__pycache__/
+app_auth/Lokals/auth_server/utils/__pycache__/
+app_auth/Lokals/auth_server/__pycache__/
+.vscode/
+respostas.txt

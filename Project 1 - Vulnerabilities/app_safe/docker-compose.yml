@@ -1,0 +1,40 @@
+version: '3.1'
+
+services:
+  lokals-master:
+    build: .
+    ports: 
+        - "8000:80"
+    volumes:
+        - ./lokals-master:/var/www/html/
+    links:
+        - db
+    networks:
+        - default
+    restart: always
+  db:
+    image: mysql:8.0
+    command: --default-authentication-plugin=mysql_native_password 
+    ports: 
+       - "3306:3306"
+    environment:
+      MYSQL_DATABASE: Lokals
+      MYSQL_USER: user
+      MYSQL_PASSWORD: user
+      MYSQL_ROOT_PASSWORD: user
+    volumes:
+      - ./db:/var/lib/mysql            
+    networks:
+      - default
+    restart: always
+  
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+        - '8080:80'
+    restart: always
+    environment:
+        PMA_HOST: db
+    depends_on:
+        - db
+ 
